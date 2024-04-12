@@ -1,0 +1,77 @@
+{
+    "name": "website",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/website",
+    "projectType": "application",
+    "tags": [],
+    "// targets": "to see all targets run: nx show project website --web",
+    "targets": {
+        "build-app": {
+            "executor": "@nx/next:build",
+            "defaultConfiguration": "production",
+            "options": {
+                "debug": true,
+                "cwd": "apps/website",
+                "outputPath": "dist/apps/website"
+            },
+            "configurations": {
+                "development": {
+                    "outputPath": "apps/website"
+                },
+                "production": {}
+            }
+        },
+        "format-build-folder": {
+            "executor": "nx:run-commands",
+            "defaultConfiguration": "production",
+            "options": {
+                "commands": [
+                    "mv -v website/.next/standalone standalone",
+                    "mv -v website/.next/static standalone/dist/apps/website/.next/static",
+                    "mv -v website/public standalone/apps/website/public",
+                    "rm -rf website",
+                    "mv standalone website"
+                ],
+                "parallel": false,
+                "cwd": "dist/apps"
+            }
+        },
+        "build": {
+            "executor": "nx:run-commands",
+            "options": {
+                "commands": [
+                    "npx nx build-app website",
+                    "npx nx format-build-folder website"
+                ],
+                "parallel": false
+            },
+            "outputs": ["{workspaceRoot}/dist/apps/website"]
+        },
+        "serve": {
+            "executor": "@nx/next:server",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "website:build-app",
+                "dev": true
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "website:build-app:development",
+                    "dev": true
+                },
+                "production": {
+                    "buildTarget": "website:build-app:production",
+                    "dev": false
+                }
+            }
+        },
+        "storybook": {
+            "executor": "nx:run-commands",
+            "options": {
+                "commands": ["npx storybook dev -p 6006"],
+                "parallel": false,
+                "cwd": "apps/website"
+            }
+        }
+    }
+}
