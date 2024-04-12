@@ -2,8 +2,8 @@
 
 import { HTMLProps } from 'react';
 
-export type InputProps = HTMLProps<HTMLInputElement>;
+export type InputProps = Omit<HTMLProps<HTMLInputElement>, 'children'>;
 
-export function Input({ children, ...props }: InputProps) {
-    return <input {...props}>{children}</input>;
+export function Input({ value, ...props }: InputProps) {
+    return <input {...props} value={value} />;
 }

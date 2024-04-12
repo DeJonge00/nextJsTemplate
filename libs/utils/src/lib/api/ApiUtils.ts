@@ -1,8 +1,8 @@
 'use server';
 
-import { NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 
-import { ApiWrapperProps, RequestMethod } from './ApiUtilInterfaces';
+import { type ApiWrapperProps, RequestMethod } from './ApiUtilInterfaces';
 
 // Api wrapper
 export async function apiWrapper<InputShape>({

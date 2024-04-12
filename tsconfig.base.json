@@ -21,8 +21,8 @@
             "@website/feature/server": ["libs/feature/src/server.ts"],
             "@website/ui": ["libs/ui/src/index.ts"],
             "@website/ui/server": ["libs/ui/src/server.ts"],
-            "@website/utility": ["libs/utility/src/index.ts"],
-            "@website/utility/server": ["libs/utility/src/server.ts"]
+            "@website/utils": ["libs/utils/src/index.ts"],
+            "@website/utils/server": ["libs/utils/src/server.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

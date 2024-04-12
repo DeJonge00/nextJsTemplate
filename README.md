@@ -22,7 +22,7 @@ Based on Effective React Development with Nx, by Jack Hsu
         -   data-access
         -   feature
         -   ui
-        -   utility
+        -   utils
 
 ## Instructions
 

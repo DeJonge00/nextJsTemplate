@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'fs';
 import { NextRequest } from 'next/server';
 
-import { apiWrapper, ApiWrapperParams } from '@website/utility/server';
+import { apiWrapper } from '@website/utils/server';
 
 const VERSION_APP_FILE = '../../../version.app.json';
 
@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
     )(req);
 }
 
-const health = async ({ wrapperParams: {} }: ApiWrapperParams) => {
+async function health() {
     const status = getStatus();
     const version = getVersion();
 
@@ -28,7 +28,7 @@ const health = async ({ wrapperParams: {} }: ApiWrapperParams) => {
         },
         status,
     };
-};
+}
 
 function getVersion() {
     const currentVersion = existsSync(VERSION_APP_FILE)

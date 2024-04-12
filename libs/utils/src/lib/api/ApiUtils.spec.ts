@@ -1,25 +1,14 @@
-import { cookies } from 'next/headers';
-import { NextRequest } from 'next/server';
+/**
+ * @jest-environment node
+ */
 
-import { apiWrapper } from './ApiUtils';
-import { yup } from './yupSchema';
+import { NextRequest } from 'next/server';
+import { number, object } from 'yup';
+
 import { ApiWrapperProps, RequestMethod } from './ApiUtilInterfaces';
+import { apiWrapper } from './ApiUtils';
 
 const errorBackup = console.error;
-
-jest.mock('./ShopifyStorefrontClient', () => ({
-    getStorefrontClient: jest.fn(),
-}));
-jest.mock('./ShopifyAdminClient', () => ({
-    getAdminClient: jest.fn(),
-}));
-jest.mock('../config/configFactory', () => ({
-    configFactory: {
-        createShopifyStorefrontClientConfig: () => ({}),
-    },
-}));
-const cookiesMock = { get: jest.fn(), set: jest.fn() };
-jest.mock('next/headers', () => ({ cookies: jest.fn() }));
 
 const defaultProps: ApiWrapperProps = {
     api: jest.fn(),
@@ -29,7 +18,6 @@ describe('apiWrapper', () => {
     beforeAll(() => (console.error = jest.fn()));
     beforeEach(() => {
         jest.resetAllMocks();
-        (cookies as jest.Mock).mockReturnValue(cookiesMock);
         (defaultProps.api as jest.Mock).mockReturnValue({
             body: undefined,
             status: 200,
@@ -68,50 +56,12 @@ describe('apiWrapper', () => {
         });
     });
 
-    describe('checkLoggedIn', () => {
-        it('calls the api', async () => {
-            cookiesMock.get.mockReturnValue({
-                value: JSON.stringify({ customerAccessToken: 'token' }),
-            });
-            const fn = await apiWrapper({
-                ...defaultProps,
-                checkLoggedIn: true,
-            });
-            await fn(defaultApiProps);
-            expect(defaultProps.api).toHaveBeenCalledTimes(1);
-        });
-
-        it('supplies a logged in users customerAccessToken', async () => {
-            cookiesMock.get.mockReturnValue({
-                value: JSON.stringify({ customerAccessToken: 'token' }),
-            });
-            const fn = await apiWrapper({
-                ...defaultProps,
-                checkLoggedIn: true,
-            });
-            await fn(defaultApiProps);
-            expect(
-                (defaultProps.api as jest.Mock).mock.calls[0][0].wrapperParams
-            ).toHaveProperty('customerAccessToken');
-        });
-
-        it('errors if the customerAccessToken cannot be found', async () => {
-            const fn = await apiWrapper({
-                ...defaultProps,
-                checkLoggedIn: true,
-            });
-            const response = await fn(defaultApiProps);
-            expect(response.status).toEqual(401);
-        });
-    });
-
     describe('inputSchema', () => {
-        const inputSchema = yup
-            .object({
-                requiredKey: yup.number().required(),
-                keyOne: yup.number().nullable(),
-                keyTwo: yup.number().nullable(),
-            })
+        const inputSchema = object({
+            requiredKey: number().required(),
+            keyOne: number().nullable(),
+            keyTwo: number().nullable(),
+        })
             .noUnknown()
             .strict();
 

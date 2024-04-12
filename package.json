@@ -3,13 +3,18 @@
     "version": "0.0.0",
     "license": "MIT",
     "scripts": {
-        "format": "nx format:write"
+        "format": "nx format:write",
+        "affected:e2e": "nx affected:e2e",
+        "affected:lint": "nx affected:lint",
+        "affected:test": "nx affected:test"
     },
     "private": true,
     "dependencies": {
+        "@testing-library/react": "^15.0.1",
         "next": "14.0.4",
         "react": "18.2.0",
         "react-dom": "18.2.0",
+        "sharp": "^0.33.3",
         "storybook": "^8.0.8",
         "tslib": "^2.3.0",
         "vite": "^5.2.8",

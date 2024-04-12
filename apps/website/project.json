@@ -4,7 +4,6 @@
     "sourceRoot": "apps/website",
     "projectType": "application",
     "tags": [],
-    "// targets": "to see all targets run: nx show project website --web",
     "targets": {
         "build-app": {
             "executor": "@nx/next:build",
@@ -63,14 +62,6 @@
                     "buildTarget": "website:build-app:production",
                     "dev": false
                 }
-            }
-        },
-        "storybook": {
-            "executor": "nx:run-commands",
-            "options": {
-                "commands": ["npx storybook dev -p 6006"],
-                "parallel": false,
-                "cwd": "apps/website"
             }
         }
     }

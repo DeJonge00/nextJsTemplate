@@ -1,3 +1,5 @@
+'use client';
+
 import { Button, ButtonProps } from './Button';
 import { Input, InputProps } from './Input';
 

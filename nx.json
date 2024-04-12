@@ -72,5 +72,10 @@
             "library": {}
         }
     },
-    "nxCloudAccessToken": "NWYwMzA5NGEtNjcwNy00MTEwLTlmM2EtNmE0ZGFkNGE1ZjIzfHJlYWQtd3JpdGU="
+    "nxCloudAccessToken": "NWYwMzA5NGEtNjcwNy00MTEwLTlmM2EtNmE0ZGFkNGE1ZjIzfHJlYWQtd3JpdGU=",
+    "targetDefaults": {
+        "build": {
+            "inputs": ["production", "^production"]
+        }
+    }
 }
