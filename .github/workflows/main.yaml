@@ -23,6 +23,7 @@ jobs:
   init:
     name: Pipeline info
     runs-on: ubuntu-latest
+    needs: checkout
     steps:
       - run: ls .
       - run: ls ./.github
