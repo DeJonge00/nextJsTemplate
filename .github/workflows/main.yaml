@@ -16,6 +16,9 @@ jobs:
     name: Pipeline info
     runs-on: ubuntu-latest
     steps:
+      - run: ls .
+      - run: ls ./.github
+      - run: ls ./.github/workflows
       - run: ls ./.github/workflows/actions
       - uses: ./.github/workflows/actions/info.yaml
     
