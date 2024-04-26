@@ -16,14 +16,14 @@ jobs:
     name: Pipeline info
     runs-on: ubuntu-latest
     steps:
-      - uses: ./actions/info.yaml
+      - uses: ./actions/info
   setup:
     name: Setup repo
     runs-on: ubuntu-latest
     steps:
-      - uses: ./actions/setup.yaml
+      - uses: ./actions/setup
   ci:
     name: CI
     runs-on: ubuntu-latest
     steps:
-      - uses: ./actions/ci.yaml
+      - uses: ./actions/ci
