@@ -18,13 +18,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./workflows/actions/info.yaml
+      - uses: ./actions/info.yaml
   init2:
     name: Pipeline info
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/workflows/actions/info.yaml
+      - uses: ./.github/actions/info.yaml
     
   ci:
     name: CI
@@ -32,5 +32,5 @@ jobs:
     needs: init
     steps:
       - uses: actions/checkout@v4
-      - uses: ./workflows/actions/setup.yaml
-      - uses: ./workflows/actions/ci.yaml
+      - uses: ./actions/setup.yaml
+      - uses: ./actions/ci.yaml
