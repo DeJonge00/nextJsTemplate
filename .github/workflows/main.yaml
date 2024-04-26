@@ -17,8 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
   init:
     name: Pipeline info
@@ -26,6 +24,12 @@ jobs:
     needs: checkout
     steps:
       - uses: ./workflows/actions/info.yaml
+  init2:
+    name: Pipeline info
+    runs-on: ubuntu-latest
+    needs: checkout
+    steps:
+      - uses: ./.github/workflows/actions/info.yaml
     
   setup:
     name: Setup repo
