@@ -1,0 +1,29 @@
+name: init
+run-name: Init
+
+on:
+  push:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  init:
+    name: Pipeline info
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./actions/info
+  setup:
+    name: Setup repo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./actions/setup
+  ci:
+    name: CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./actions/ci

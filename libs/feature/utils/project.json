@@ -1,0 +1,8 @@
+{
+    "name": "feature-utils",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/feature/utils/src",
+    "projectType": "library",
+    "tags": ["org:shared", "feature:feature", "scope:utils"],
+    "targets": {}
+}

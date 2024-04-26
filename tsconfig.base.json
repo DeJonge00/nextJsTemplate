@@ -18,6 +18,18 @@
             "@website/data-access": ["libs/data-access/src/index.ts"],
             "@website/data-access/server": ["libs/data-access/src/server.ts"],
             "@website/feature": ["libs/feature/src/index.ts"],
+            "@website/feature-data-access": [
+                "libs/feature/data-access/src/index.ts"
+            ],
+            "@website/feature-data-access/server": [
+                "libs/feature/data-access/src/server.ts"
+            ],
+            "@website/feature-ui": ["libs/feature/ui/src/index.ts"],
+            "@website/feature-ui/server": ["libs/feature/ui/src/server.ts"],
+            "@website/feature-utils": ["libs/feature/utils/src/index.ts"],
+            "@website/feature-utils/server": [
+                "libs/feature/utils/src/server.ts"
+            ],
             "@website/feature/server": ["libs/feature/src/server.ts"],
             "@website/ui": ["libs/ui/src/index.ts"],
             "@website/ui/server": ["libs/ui/src/server.ts"],

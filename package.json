@@ -10,6 +10,7 @@
     },
     "private": true,
     "dependencies": {
+        "@testing-library/jest-dom": "^6.4.2",
         "@testing-library/react": "^15.0.1",
         "next": "14.0.4",
         "react": "18.2.0",

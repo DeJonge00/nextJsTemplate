@@ -1,0 +1,8 @@
+{
+    "name": "feature-ui",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/feature/ui/src",
+    "projectType": "library",
+    "tags": ["org:shared", "feature:feature", "scope:ui"],
+    "targets": {}
+}

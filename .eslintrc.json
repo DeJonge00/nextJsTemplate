@@ -2,6 +2,54 @@
     "root": true,
     "ignorePatterns": ["**/*"],
     "plugins": ["@nx"],
+    "rules": {
+        "@nx/enforce-module-boundaries": [
+            "error",
+            {
+                "enforceBuildableLibDependency": true,
+                "allow": [],
+                "depConstraints": [
+                    {
+                        "sourceTag": "*",
+                        "onlyDependOnLibsWithTags": ["*"]
+                    },
+                    {
+                        "sourceTag": "org:website",
+                        "onlyDependOnLibsWithTags": [
+                            "org:website",
+                            "org:shared"
+                        ]
+                    },
+                    {
+                        "sourceTag": "scope:utils",
+                        "onlyDependOnLibsWithTags": ["scope:utils"]
+                    },
+                    {
+                        "sourceTag": "scope:data-access",
+                        "onlyDependOnLibsWithTags": [
+                            "scope:utils",
+                            "scope:data-access"
+                        ]
+                    },
+                    {
+                        "sourceTag": "scope:ui",
+                        "onlyDependOnLibsWithTags": [
+                            "scope:utils",
+                            "scope:data-access",
+                            "scope:ui"
+                        ]
+                    },
+                    {
+                        "sourceTag": "feature:feature",
+                        "onlyDependOnLibsWithTags": [
+                            "feature:shared",
+                            "feature:feature"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
     "overrides": [
         {
             "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
