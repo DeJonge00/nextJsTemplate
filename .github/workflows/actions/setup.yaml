@@ -1,8 +1,4 @@
 steps:
-  - uses: actions/checkout@v4
-    with:
-        fetch-depth: 0
-
   # - run: npx nx-cloud start-ci-run --distribute-on="5 linux-medium-js" --stop-agents-after="e2e-ci"
 
   # Cache node_modules
